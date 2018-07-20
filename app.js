@@ -7,12 +7,11 @@ const port = process.env.PORT || 3000;
 app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
-    
     next();
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello express');
+    res.send('Hello <h1>express!</h1>');
 });
 
 app.listen(port, () => {
