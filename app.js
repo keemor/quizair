@@ -10,9 +10,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello <h1>express!</h1>');
-});
+// app.get('/', (req, res) => {
+//     //res.send('Hello <h1>express!</h1>');
+//     //res.render('index.html');
+// });
 
 app.listen(port, () => {
     console.log(`Server running on ${port}`);
