@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
@@ -13,8 +15,8 @@ app.get('/', (req, res) => {
     res.send('Hello express');
 });
 
-app.listen(3000, () => {
-    console.log('Server running');
+app.listen(port, () => {
+    console.log(`Server running on ${port}`);
 });
 
 // const axios = require('axios');
