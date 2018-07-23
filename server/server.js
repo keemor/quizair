@@ -12,22 +12,22 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
-app.post('/todos', (req, res) => {
-    console.log(req.body);
+// app.post('/todos', (req, res) => {
+//     console.log(req.body);
 
-    const todo = new Todo({
-        text: req.body.text
-    });
+//     const todo = new Todo({
+//         text: req.body.text
+//     });
 
-    todo.save().then(
-        doc => {
-            res.send(doc);
-        },
-        e => {
-            res.status(400).send(e);
-        }
-    );
-});
+//     todo.save().then(
+//         doc => {
+//             res.send(doc);
+//         },
+//         e => {
+//             res.status(400).send(e);
+//         }
+//     );
+// });
 
 app.get('/todos', (req, res) => {
     Todo.find({})
