@@ -1,23 +1,100 @@
-const express = require('express');
+// const { MongoClient, ObjectID } = require('mongodb');
 
-const app = express();
+// const { mongoose } = require('./db/mongoose');
 
-const port = process.env.PORT || 3000;
+// mongoose.Promise = global.Promise;
+// mongoose.connect(
+//     'mongodb://localhost:27017/TodoApp',
+//     { useNewUrlParser: true }
+// );
 
-app.use(express.static(`${__dirname}/public`));
+// const newTodo = new Todo({
+//     text: '4444444444444444444'
+// });
 
-app.use((req, res, next) => {
-    next();
-});
+// newTodo
+//     .save()
+//     .then(
+//         doc => {
+//             console.log('Saved', doc);
+//         },
+//         e => {
+//             console.log(e);
+//         }
+//     )
+//     .then(() => {
+//         Todo.find({})
+//             .exec()
+//             .then(
+//                 docs => {
+//                     docs.map(d => console.log(d, d._id.getTimestamp()));
+//                 },
+//                 err => {
+//                     console.log(err);
+//                 }
+//             );
+//     });
+
+// MongoClient.connect(
+//     'mongodb://localhost:27017',
+//     { useNewUrlParser: true },
+//     (err, client) => {
+//         if (err) {
+//             return console.log('Error to connect');
+//         }
+//         console.log('Conntected');
+//         const db = client.db('TodoApp');
+
+//         db.collection('Todos')
+//             .find({ _id: new ObjectID('5b51e0f4098f7137b0b6e4d4') })
+//             .toArray()
+//             .then(
+//                 docs => {
+//                     docs.map(d => console.log(d, d._id.getTimestamp()));
+//                 },
+//                 err => {
+//                     console.log(err);
+//                 }
+//             );
+
+//         // db.collection('Todos').insertOne(
+//         //     {
+//         //         text: 'something',
+//         //         completed: false
+//         //     },
+//         //     (err, result) => {
+//         //         if (err) {
+//         //             return console.log(err);
+//         //         }
+
+//         //         console.log(JSON.stringify(result.ops, undefined, 2));
+//         //     }
+//         // );
+
+//         client.close();
+//     }
+// );
+
+// const express = require('express');
+
+// const app = express();
+
+// const port = process.env.PORT || 3000;
+
+// app.use(express.static(`${__dirname}/public`));
+
+// app.use((req, res, next) => {
+//     next();
+// });
+
+// app.listen(port, () => {
+//     console.log(`Server running on ${port}`);
+// });
 
 // app.get('/', (req, res) => {
 //     //res.send('Hello <h1>express!</h1>');
 //     //res.render('index.html');
 // });
-
-app.listen(port, () => {
-    console.log(`Server running on ${port}`);
-});
 
 // const axios = require('axios');
 
