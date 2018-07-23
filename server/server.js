@@ -1,3 +1,4 @@
+const wwwhisper = require('connect-wwwhisper');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -8,6 +9,8 @@ const { User } = require('./models/user');
 const port = process.env.PORT || 3000;
 
 const app = express();
+
+app.use(wwwhisper());
 
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));

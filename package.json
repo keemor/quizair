@@ -11,6 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.18.3",
+        "connect-wwwhisper": "*",
         "express": "^4.16.3",
         "mongodb": "^3.1.1",
         "mongoose": "^5.2.4"
