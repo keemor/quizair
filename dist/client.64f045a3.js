@@ -2567,17 +2567,7 @@ class Icon extends _MaterialComponent.default {
 }
 
 exports.default = Icon;
-},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","../MaterialComponent":"..\\node_modules\\preact-material-components\\MaterialComponent.js"}],"..\\node_modules\\preact-material-components\\themeUtils\\generateThemeClass.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (prop) {
-  return 'mdc-theme--' + prop + '-bg';
-};
-},{}],"..\\node_modules\\preact-material-components\\Button\\index.js":[function(require,module,exports) {
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","../MaterialComponent":"..\\node_modules\\preact-material-components\\MaterialComponent.js"}],"..\\node_modules\\preact-material-components\\List\\index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2589,116 +2579,47 @@ var _preact = require("preact");
 
 var _MaterialComponent = _interopRequireDefault(require("../MaterialComponent"));
 
-var _Icon = _interopRequireDefault(require("../Icon/"));
-
-var _generateThemeClass = _interopRequireDefault(require("../themeUtils/generateThemeClass"));
+var _Icon = _interopRequireDefault(require("../Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /**
- *  @prop dense = false
- *  @prop raised = false
- *  @prop compact = false
- *  @prop disabled = false
- *  @prop unelevated = false
- *  @prop stroked = false
+ * @prop dense = false
+ * @prop two-line = false
+ * @prop interactive = false
  */
-class Button extends _MaterialComponent.default {
+class List extends _MaterialComponent.default {
   constructor() {
     super();
-    this.componentName = 'button';
-    this._mdcProps = ['dense', 'raised', 'unelevated', 'outlined'];
-    this.themeProps = ['primary', 'secondary'];
-  }
-
-  componentDidMount() {
-    super.attachRipple();
+    this.componentName = 'list';
+    this._mdcProps = ['dense', 'two-line', 'avatar-list'];
   }
 
   materialDom(props) {
-    const ButtonElement = props.href ? 'a' : 'button';
-    let className = '';
-    this.themeProps.forEach(themeProp => {
-      if (themeProp in props && props[themeProp] !== false) className += (0, _generateThemeClass.default)(themeProp) + ' ';
-    });
-    return (0, _preact.h)(ButtonElement, _extends({
+    if (props.interactive) {
+      return (0, _preact.h)("nav", _extends({
+        ref: this.setControlRef
+      }, props), props.children);
+    }
+
+    return (0, _preact.h)("ul", _extends({}, props, {
       ref: this.setControlRef
-    }, props, {
-      className: className
-    }), this.props.children);
+    }), props.children);
   }
 
 }
 
-class ButtonIcon extends _Icon.default {
+class ListItem extends _MaterialComponent.default {
   constructor() {
     super();
-    this.componentName = 'button__icon';
-  }
-
-}
-
-Button.Icon = ButtonIcon;
-var _default = Button;
-exports.default = _default;
-},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","../MaterialComponent":"..\\node_modules\\preact-material-components\\MaterialComponent.js","../Icon/":"..\\node_modules\\preact-material-components\\Icon\\index.js","../themeUtils/generateThemeClass":"..\\node_modules\\preact-material-components\\themeUtils\\generateThemeClass.js"}],"..\\node_modules\\preact-material-components\\Card\\index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _Button = _interopRequireDefault(require("../Button"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _MaterialComponent = _interopRequireDefault(require("../MaterialComponent"));
-
-var _preact = require("preact");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-class Card extends _MaterialComponent.default {
-  constructor() {
-    super();
-    this.componentName = 'card';
-    this._mdcProps = ['outlined'];
-  }
-
-}
-
-class CardActions extends _MaterialComponent.default {
-  constructor() {
-    super();
-    this.componentName = 'card__actions';
-    this._mdcProps = ['full-bleed'];
-  }
-
-}
-
-class CardMedia extends _MaterialComponent.default {
-  constructor() {
-    super();
-    this.componentName = 'card__media';
-    this._mdcProps = ['square', '16-9'];
-  }
-
-}
-
-class CardActionButton extends _Button.default {
-  constructor() {
-    super();
-    this.componentName = 'card__action';
+    this.componentName = 'list-item';
   }
 
   materialDom(props) {
-    return (0, _preact.h)("button", _extends({
-      className: "mdc-button mdc-card__action--button"
+    return (0, _preact.h)("li", _extends({
+      role: "option"
     }, props, {
       ref: this.setControlRef
     }), props.children);
@@ -2706,44 +2627,133 @@ class CardActionButton extends _Button.default {
 
 }
 
-class CardActionIcons extends _MaterialComponent.default {
+class LinkItem extends _MaterialComponent.default {
   constructor() {
     super();
-    this.componentName = 'card__action-icons';
+    this.componentName = 'list-item';
   }
 
-}
-
-class CardActionIcon extends _Icon.default {
-  constructor() {
-    super();
-    this.componentName = 'card__action';
+  componentDidMount() {
+    super.attachRipple();
   }
 
   materialDom(props) {
-    props.className = 'mdc-card__action--icon';
-    return super.materialDom(props);
+    return (0, _preact.h)("a", _extends({
+      role: "option"
+    }, props, {
+      ref: this.setControlRef
+    }), props.children);
   }
 
 }
 
-class CardMediaContent extends _MaterialComponent.default {
+class ListItemGraphic extends _MaterialComponent.default {
   constructor() {
     super();
-    this.componentName = 'card__media-content';
+    this.componentName = 'list-item__graphic';
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("span", _extends({}, props, {
+      ref: this.setControlRef,
+      role: "presentation"
+    }), (0, _preact.h)(_Icon.default, {
+      "aria-hidden": "true"
+    }, props.children));
   }
 
 }
 
-Card.Actions = CardActions;
-Card.ActionButton = CardActionButton;
-Card.ActionIcons = CardActionIcons;
-Card.ActionIcon = CardActionIcon;
-Card.Media = CardMedia;
-Card.CardMediaContent = CardMediaContent;
-var _default = Card;
+class ListItemMeta extends ListItemGraphic {
+  constructor() {
+    super();
+    this.componentName = 'list-item__meta';
+  }
+
+}
+
+class ListDivider extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'list-divider';
+    this._mdcProps = ['inset'];
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("li", _extends({
+      role: "separator"
+    }, props, {
+      ref: this.setControlRef
+    }));
+  }
+
+}
+
+class ListTextContainer extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'list-item__text';
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("span", _extends({}, props, {
+      ref: this.setControlRef
+    }), props.children);
+  }
+
+}
+
+class ListPrimaryText extends ListTextContainer {
+  constructor() {
+    super();
+    this.componentName = 'list-item__text__primary';
+  }
+
+}
+
+class ListSecondaryText extends ListTextContainer {
+  constructor() {
+    super();
+    this.componentName = 'list-item__secondary-text';
+  }
+
+}
+
+class ListGroup extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'list-group';
+  }
+
+}
+
+class ListGroupHeader extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'list-group__subheader';
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("h3", _extends({}, props, {
+      ref: this.setControlRef
+    }), props.children);
+  }
+
+}
+
+List.Item = ListItem;
+List.LinkItem = LinkItem;
+List.ItemGraphic = ListItemGraphic;
+List.ItemMeta = ListItemMeta;
+List.Divider = ListDivider;
+List.TextContainer = ListTextContainer;
+List.PrimaryText = ListPrimaryText;
+List.SecondaryText = ListSecondaryText;
+List.Group = ListGroup;
+List.GroupHeader = ListGroupHeader;
+var _default = List;
 exports.default = _default;
-},{"../Button":"..\\node_modules\\preact-material-components\\Button\\index.js","../Icon":"..\\node_modules\\preact-material-components\\Icon\\index.js","../MaterialComponent":"..\\node_modules\\preact-material-components\\MaterialComponent.js","preact":"..\\node_modules\\preact\\dist\\preact.esm.js"}],"..\\node_modules\\parcel-bundler\\src\\builtins\\bundle-url.js":[function(require,module,exports) {
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","../MaterialComponent":"..\\node_modules\\preact-material-components\\MaterialComponent.js","../Icon":"..\\node_modules\\preact-material-components\\Icon\\index.js"}],"..\\node_modules\\parcel-bundler\\src\\builtins\\bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -2804,7 +2814,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"..\\node_modules\\parcel-bundler\\src\\builtins\\bundle-url.js"}],"..\\node_modules\\preact-material-components\\Card\\style.css":[function(require,module,exports) {
+},{"./bundle-url":"..\\node_modules\\parcel-bundler\\src\\builtins\\bundle-url.js"}],"..\\node_modules\\preact-material-components\\List\\style.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"..\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js"}],"..\\node_modules\\preact-material-components\\Card\\style.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -2821,9 +2837,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _preact = require('preact');
 
-var _Card = require('preact-material-components/Card');
+var _List = require('preact-material-components/List');
 
-var _Card2 = _interopRequireDefault(_Card);
+var _List2 = _interopRequireDefault(_List);
+
+require('preact-material-components/List/style.css');
 
 require('preact-material-components/Card/style.css');
 
@@ -2843,7 +2861,9 @@ var Hello = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Hello.__proto__ || Object.getPrototypeOf(Hello)).call(this, props));
 
-        _this.state.todos = [];
+        _this.state = {
+            todos: []
+        };
         return _this;
     }
 
@@ -2855,24 +2875,22 @@ var Hello = function (_Component) {
             fetch('/todos').then(function (response) {
                 return response.json();
             }).then(function (data) {
-                return _this2.setState(data);
+                return _this2.setState({ todos: data.todos });
             });
         }
     }, {
         key: 'render',
-        value: function render(props, state) {
+        value: function render(props, _ref) {
+            var todos = _ref.todos;
+
             return (0, _preact.h)(
-                _Card2.default,
+                _List2.default,
                 null,
-                state.todos.map(function (todo, idx) {
+                todos.map(function (todo, idx) {
                     return (0, _preact.h)(
-                        'div',
+                        _List2.default.Item,
                         { key: idx },
-                        (0, _preact.h)(
-                            'div',
-                            null,
-                            todo.text
-                        )
+                        todo.text
                     );
                 })
             );
@@ -2883,7 +2901,7 @@ var Hello = function (_Component) {
 }(_preact.Component);
 
 exports.default = Hello;
-},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","preact-material-components/Card":"..\\node_modules\\preact-material-components\\Card\\index.js","preact-material-components/Card/style.css":"..\\node_modules\\preact-material-components\\Card\\style.css"}],"..\\node_modules\\preact-material-components\\Typography\\style.css":[function(require,module,exports) {
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","preact-material-components/List":"..\\node_modules\\preact-material-components\\List\\index.js","preact-material-components/List/style.css":"..\\node_modules\\preact-material-components\\List\\style.css","preact-material-components/Card/style.css":"..\\node_modules\\preact-material-components\\Card\\style.css"}],"..\\node_modules\\preact-material-components\\Typography\\style.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
