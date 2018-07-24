@@ -1,4 +1,4 @@
-const wwwhisper = require('connect-wwwhisper');
+//const wwwhisper = require('connect-wwwhisper');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -10,27 +10,31 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(wwwhisper());
+// app.use(wwwhisper(false));
 
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../public`));
+app.use(express.static(`${__dirname}/../dist`));
 
-app.post('/todos', (req, res) => {
-    console.log(req.body);
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, './build', 'index.html'));
+// });
 
-    const todo = new Todo({
-        text: req.body.text
-    });
+// app.post('/todos', (req, res) => {
+//     console.log(req.body);
 
-    todo.save().then(
-        doc => {
-            res.send(doc);
-        },
-        e => {
-            res.status(400).send(e);
-        }
-    );
-});
+//     const todo = new Todo({
+//         text: req.body.text
+//     });
+
+//     todo.save().then(
+//         doc => {
+//             res.send(doc);
+//         },
+//         e => {
+//             res.status(400).send(e);
+//         }
+//     );
+// });
 
 app.get('/todos', (req, res) => {
     Todo.find({})

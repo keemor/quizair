@@ -10,10 +10,15 @@
     "author": "keemor",
     "license": "ISC",
     "dependencies": {
+        "babel": "^6.23.0",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
         "body-parser": "^1.18.3",
         "connect-wwwhisper": "*",
         "express": "^4.16.3",
         "mongodb": "^3.1.1",
-        "mongoose": "^5.2.4"
+        "mongoose": "^5.2.4",
+        "parcel-bundler": "^1.9.7",
+        "preact": "^8.2.9"
     }
 }
