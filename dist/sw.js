@@ -40,11 +40,11 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "b458abb512ff97d1b43634266829071a"
+    "revision": "1b6e43504329f5a0f7978c16d4921046"
   },
   {
     "url": "/",
-    "revision": "0585c4368fcbaa73fd4fd6bcc8616cdf"
+    "revision": "698d97eb8e5708dafa9ec9f8f56b78a4"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
