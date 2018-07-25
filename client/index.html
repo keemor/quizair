@@ -17,6 +17,15 @@
     <link rel="manifest" href="manifest.webmanifest">
 </head>
 <noscript>Enable JavaScript to see this page</noscript>
+<script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js');
+        });
+    }
+</script>
 
 <body>
     <script src="./index.js"></script>
