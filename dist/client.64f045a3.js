@@ -2901,7 +2901,548 @@ var Hello = function (_Component) {
 }(_preact.Component);
 
 exports.default = Hello;
-},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","preact-material-components/List":"..\\node_modules\\preact-material-components\\List\\index.js","preact-material-components/List/style.css":"..\\node_modules\\preact-material-components\\List\\style.css","preact-material-components/Card/style.css":"..\\node_modules\\preact-material-components\\Card\\style.css"}],"..\\node_modules\\preact-material-components\\Typography\\style.css":[function(require,module,exports) {
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","preact-material-components/List":"..\\node_modules\\preact-material-components\\List\\index.js","preact-material-components/List/style.css":"..\\node_modules\\preact-material-components\\List\\style.css","preact-material-components/Card/style.css":"..\\node_modules\\preact-material-components\\Card\\style.css"}],"..\\node_modules\\@material\\base\\index.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MDCComponent = exports.MDCFoundation = undefined;
+
+var _foundation = require('./foundation');
+
+var _foundation2 = _interopRequireDefault(_foundation);
+
+var _component = require('./component');
+
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+exports.MDCFoundation = _foundation2.default;
+exports.MDCComponent = _component2.default;
+},{"./foundation":"..\\node_modules\\@material\\base\\foundation.js","./component":"..\\node_modules\\@material\\base\\component.js"}],"..\\node_modules\\@material\\toolbar\\constants.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const cssClasses = exports.cssClasses = {
+  FIXED: 'mdc-toolbar--fixed',
+  FIXED_LASTROW: 'mdc-toolbar--fixed-lastrow-only',
+  FIXED_AT_LAST_ROW: 'mdc-toolbar--fixed-at-last-row',
+  TOOLBAR_ROW_FLEXIBLE: 'mdc-toolbar--flexible',
+  FLEXIBLE_DEFAULT_BEHAVIOR: 'mdc-toolbar--flexible-default-behavior',
+  FLEXIBLE_MAX: 'mdc-toolbar--flexible-space-maximized',
+  FLEXIBLE_MIN: 'mdc-toolbar--flexible-space-minimized'
+};
+
+const strings = exports.strings = {
+  TITLE_SELECTOR: '.mdc-toolbar__title',
+  ICON_SELECTOR: '.mdc-toolbar__icon',
+  FIRST_ROW_SELECTOR: '.mdc-toolbar__row:first-child',
+  CHANGE_EVENT: 'MDCToolbar:change'
+};
+
+const numbers = exports.numbers = {
+  MAX_TITLE_SIZE: 2.125,
+  MIN_TITLE_SIZE: 1.25,
+  TOOLBAR_ROW_HEIGHT: 64,
+  TOOLBAR_ROW_MOBILE_HEIGHT: 56,
+  TOOLBAR_MOBILE_BREAKPOINT: 600
+};
+},{}],"..\\node_modules\\@material\\toolbar\\foundation.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _foundation = require('@material/base/foundation');
+
+var _foundation2 = _interopRequireDefault(_foundation);
+
+var _constants = require('./constants');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+class MDCToolbarFoundation extends _foundation2.default {
+  static get cssClasses() {
+    return _constants.cssClasses;
+  }
+
+  static get strings() {
+    return _constants.strings;
+  }
+
+  static get numbers() {
+    return _constants.numbers;
+  }
+
+  static get defaultAdapter() {
+    return {
+      hasClass: () => /* className: string */ /* boolean */false,
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      registerScrollHandler: () => /* handler: EventListener */{},
+      deregisterScrollHandler: () => /* handler: EventListener */{},
+      registerResizeHandler: () => /* handler: EventListener */{},
+      deregisterResizeHandler: () => /* handler: EventListener */{},
+      getViewportWidth: () => /* number */0,
+      getViewportScrollY: () => /* number */0,
+      getOffsetHeight: () => /* number */0,
+      getFirstRowElementOffsetHeight: () => /* number */0,
+      notifyChange: () => /* evtData: {flexibleExpansionRatio: number} */{},
+      setStyle: () => /* property: string, value: string */{},
+      setStyleForTitleElement: () => /* property: string, value: string */{},
+      setStyleForFlexibleRowElement: () => /* property: string, value: string */{},
+      setStyleForFixedAdjustElement: () => /* property: string, value: string */{}
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCToolbarFoundation.defaultAdapter, adapter));
+    this.resizeHandler_ = () => this.checkRowHeight_();
+    this.scrollHandler_ = () => this.updateToolbarStyles_();
+    this.checkRowHeightFrame_ = 0;
+    this.scrollFrame_ = 0;
+    this.executedLastChange_ = false;
+
+    this.calculations_ = {
+      toolbarRowHeight: 0,
+      // Calculated Height ratio. We use ratio to calculate corresponding heights in resize event.
+      toolbarRatio: 0, // The ratio of toolbar height to row height
+      flexibleExpansionRatio: 0, // The ratio of flexible space height to row height
+      maxTranslateYRatio: 0, // The ratio of max toolbar move up distance to row height
+      scrollThresholdRatio: 0, // The ratio of max scrollTop that we should listen to to row height
+      // Derived Heights based on the above key ratios.
+      toolbarHeight: 0,
+      flexibleExpansionHeight: 0, // Flexible row minus toolbar height (derived)
+      maxTranslateYDistance: 0, // When toolbar only fix last row (derived)
+      scrollThreshold: 0
+    };
+    // Toolbar fixed behavior
+    // If toolbar is fixed
+    this.fixed_ = false;
+    // If fixed is targeted only at the last row
+    this.fixedLastrow_ = false;
+    // Toolbar flexible behavior
+    // If the first row is flexible
+    this.hasFlexibleRow_ = false;
+    // If use the default behavior
+    this.useFlexDefaultBehavior_ = false;
+  }
+
+  init() {
+    this.fixed_ = this.adapter_.hasClass(MDCToolbarFoundation.cssClasses.FIXED);
+    this.fixedLastrow_ = this.adapter_.hasClass(MDCToolbarFoundation.cssClasses.FIXED_LASTROW) & this.fixed_;
+    this.hasFlexibleRow_ = this.adapter_.hasClass(MDCToolbarFoundation.cssClasses.TOOLBAR_ROW_FLEXIBLE);
+    if (this.hasFlexibleRow_) {
+      this.useFlexDefaultBehavior_ = this.adapter_.hasClass(MDCToolbarFoundation.cssClasses.FLEXIBLE_DEFAULT_BEHAVIOR);
+    }
+    this.initKeyRatio_();
+    this.setKeyHeights_();
+    this.adapter_.registerResizeHandler(this.resizeHandler_);
+    this.adapter_.registerScrollHandler(this.scrollHandler_);
+  }
+
+  destroy() {
+    this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+    this.adapter_.deregisterScrollHandler(this.scrollHandler_);
+  }
+
+  updateAdjustElementStyles() {
+    if (this.fixed_) {
+      this.adapter_.setStyleForFixedAdjustElement('margin-top', `${this.calculations_.toolbarHeight}px`);
+    }
+  }
+
+  getFlexibleExpansionRatio_(scrollTop) {
+    // To prevent division by zero when there is no flexibleExpansionHeight
+    const delta = 0.0001;
+    return Math.max(0, 1 - scrollTop / (this.calculations_.flexibleExpansionHeight + delta));
+  }
+
+  checkRowHeight_() {
+    cancelAnimationFrame(this.checkRowHeightFrame_);
+    this.checkRowHeightFrame_ = requestAnimationFrame(() => this.setKeyHeights_());
+  }
+
+  setKeyHeights_() {
+    const newToolbarRowHeight = this.getRowHeight_();
+    if (newToolbarRowHeight !== this.calculations_.toolbarRowHeight) {
+      this.calculations_.toolbarRowHeight = newToolbarRowHeight;
+      this.calculations_.toolbarHeight = this.calculations_.toolbarRatio * this.calculations_.toolbarRowHeight;
+      this.calculations_.flexibleExpansionHeight = this.calculations_.flexibleExpansionRatio * this.calculations_.toolbarRowHeight;
+      this.calculations_.maxTranslateYDistance = this.calculations_.maxTranslateYRatio * this.calculations_.toolbarRowHeight;
+      this.calculations_.scrollThreshold = this.calculations_.scrollThresholdRatio * this.calculations_.toolbarRowHeight;
+      this.updateAdjustElementStyles();
+      this.updateToolbarStyles_();
+    }
+  }
+
+  updateToolbarStyles_() {
+    cancelAnimationFrame(this.scrollFrame_);
+    this.scrollFrame_ = requestAnimationFrame(() => {
+      const scrollTop = this.adapter_.getViewportScrollY();
+      const hasScrolledOutOfThreshold = this.scrolledOutOfThreshold_(scrollTop);
+
+      if (hasScrolledOutOfThreshold && this.executedLastChange_) {
+        return;
+      }
+
+      const flexibleExpansionRatio = this.getFlexibleExpansionRatio_(scrollTop);
+
+      this.updateToolbarFlexibleState_(flexibleExpansionRatio);
+      if (this.fixedLastrow_) {
+        this.updateToolbarFixedState_(scrollTop);
+      }
+      if (this.hasFlexibleRow_) {
+        this.updateFlexibleRowElementStyles_(flexibleExpansionRatio);
+      }
+      this.executedLastChange_ = hasScrolledOutOfThreshold;
+      this.adapter_.notifyChange({ flexibleExpansionRatio: flexibleExpansionRatio });
+    });
+  }
+
+  scrolledOutOfThreshold_(scrollTop) {
+    return scrollTop > this.calculations_.scrollThreshold;
+  }
+
+  initKeyRatio_() {
+    const toolbarRowHeight = this.getRowHeight_();
+    const firstRowMaxRatio = this.adapter_.getFirstRowElementOffsetHeight() / toolbarRowHeight;
+    this.calculations_.toolbarRatio = this.adapter_.getOffsetHeight() / toolbarRowHeight;
+    this.calculations_.flexibleExpansionRatio = firstRowMaxRatio - 1;
+    this.calculations_.maxTranslateYRatio = this.fixedLastrow_ ? this.calculations_.toolbarRatio - firstRowMaxRatio : 0;
+    this.calculations_.scrollThresholdRatio = (this.fixedLastrow_ ? this.calculations_.toolbarRatio : firstRowMaxRatio) - 1;
+  }
+
+  getRowHeight_() {
+    const breakpoint = MDCToolbarFoundation.numbers.TOOLBAR_MOBILE_BREAKPOINT;
+    return this.adapter_.getViewportWidth() < breakpoint ? MDCToolbarFoundation.numbers.TOOLBAR_ROW_MOBILE_HEIGHT : MDCToolbarFoundation.numbers.TOOLBAR_ROW_HEIGHT;
+  }
+
+  updateToolbarFlexibleState_(flexibleExpansionRatio) {
+    this.adapter_.removeClass(MDCToolbarFoundation.cssClasses.FLEXIBLE_MAX);
+    this.adapter_.removeClass(MDCToolbarFoundation.cssClasses.FLEXIBLE_MIN);
+    if (flexibleExpansionRatio === 1) {
+      this.adapter_.addClass(MDCToolbarFoundation.cssClasses.FLEXIBLE_MAX);
+    } else if (flexibleExpansionRatio === 0) {
+      this.adapter_.addClass(MDCToolbarFoundation.cssClasses.FLEXIBLE_MIN);
+    }
+  }
+
+  updateToolbarFixedState_(scrollTop) {
+    const translateDistance = Math.max(0, Math.min(scrollTop - this.calculations_.flexibleExpansionHeight, this.calculations_.maxTranslateYDistance));
+    this.adapter_.setStyle('transform', `translateY(${-translateDistance}px)`);
+
+    if (translateDistance === this.calculations_.maxTranslateYDistance) {
+      this.adapter_.addClass(MDCToolbarFoundation.cssClasses.FIXED_AT_LAST_ROW);
+    } else {
+      this.adapter_.removeClass(MDCToolbarFoundation.cssClasses.FIXED_AT_LAST_ROW);
+    }
+  }
+
+  updateFlexibleRowElementStyles_(flexibleExpansionRatio) {
+    if (this.fixed_) {
+      const height = this.calculations_.flexibleExpansionHeight * flexibleExpansionRatio;
+      this.adapter_.setStyleForFlexibleRowElement('height', `${height + this.calculations_.toolbarRowHeight}px`);
+    }
+    if (this.useFlexDefaultBehavior_) {
+      this.updateElementStylesDefaultBehavior_(flexibleExpansionRatio);
+    }
+  }
+
+  updateElementStylesDefaultBehavior_(flexibleExpansionRatio) {
+    const maxTitleSize = MDCToolbarFoundation.numbers.MAX_TITLE_SIZE;
+    const minTitleSize = MDCToolbarFoundation.numbers.MIN_TITLE_SIZE;
+    const currentTitleSize = (maxTitleSize - minTitleSize) * flexibleExpansionRatio + minTitleSize;
+
+    this.adapter_.setStyleForTitleElement('font-size', `${currentTitleSize}rem`);
+  }
+}
+exports.default = MDCToolbarFoundation;
+},{"@material/base/foundation":"..\\node_modules\\@material\\base\\foundation.js","./constants":"..\\node_modules\\@material\\toolbar\\constants.js"}],"..\\node_modules\\@material\\toolbar\\index.js":[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MDCToolbar = exports.MDCToolbarFoundation = undefined;
+
+var _index = require('@material/base/index');
+
+var _index2 = require('@material/ripple/index');
+
+var _foundation = require('./foundation');
+
+var _foundation2 = _interopRequireDefault(_foundation);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.MDCToolbarFoundation = _foundation2.default; /**
+                                                      * Copyright 2017 Google Inc. All Rights Reserved.
+                                                      *
+                                                      * Licensed under the Apache License, Version 2.0 (the "License");
+                                                      * you may not use this file except in compliance with the License.
+                                                      * You may obtain a copy of the License at
+                                                      *
+                                                      *      http://www.apache.org/licenses/LICENSE-2.0
+                                                      *
+                                                      * Unless required by applicable law or agreed to in writing, software
+                                                      * distributed under the License is distributed on an "AS IS" BASIS,
+                                                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+                                                      * See the License for the specific language governing permissions and
+                                                      * limitations under the License.
+                                                      */
+
+class MDCToolbar extends _index.MDCComponent {
+  static attachTo(root) {
+    return new MDCToolbar(root);
+  }
+
+  get firstRowElement_() {
+    return this.root_.querySelector(_foundation2.default.strings.FIRST_ROW_SELECTOR);
+  }
+
+  get titleElement_() {
+    return this.root_.querySelector(_foundation2.default.strings.TITLE_SELECTOR);
+  }
+
+  set fixedAdjustElement(fixedAdjustElement) {
+    this.fixedAdjustElement_ = fixedAdjustElement;
+    this.foundation_.updateAdjustElementStyles();
+  }
+
+  get fixedAdjustElement() {
+    return this.fixedAdjustElement_;
+  }
+
+  initialize() {
+    this.ripples_ = [].map.call(this.root_.querySelectorAll(_foundation2.default.strings.ICON_SELECTOR), icon => {
+      const ripple = _index2.MDCRipple.attachTo(icon);
+      ripple.unbounded = true;
+      return ripple;
+    });
+  }
+
+  destroy() {
+    this.ripples_.forEach(ripple => {
+      ripple.destroy();
+    });
+    super.destroy();
+  }
+
+  getDefaultFoundation() {
+    return new _foundation2.default({
+      hasClass: className => this.root_.classList.contains(className),
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      registerScrollHandler: handler => window.addEventListener('scroll', handler),
+      deregisterScrollHandler: handler => window.removeEventListener('scroll', handler),
+      registerResizeHandler: handler => window.addEventListener('resize', handler),
+      deregisterResizeHandler: handler => window.removeEventListener('resize', handler),
+      getViewportWidth: () => window.innerWidth,
+      getViewportScrollY: () => window.pageYOffset,
+      getOffsetHeight: () => this.root_.offsetHeight,
+      getFirstRowElementOffsetHeight: () => this.firstRowElement_.offsetHeight,
+      notifyChange: evtData => this.emit(_foundation2.default.strings.CHANGE_EVENT, evtData),
+      setStyle: (property, value) => this.root_.style.setProperty(property, value),
+      setStyleForTitleElement: (property, value) => this.titleElement_.style.setProperty(property, value),
+      setStyleForFlexibleRowElement: (property, value) => this.firstRowElement_.style.setProperty(property, value),
+      setStyleForFixedAdjustElement: (property, value) => {
+        if (this.fixedAdjustElement) {
+          this.fixedAdjustElement.style.setProperty(property, value);
+        }
+      }
+    });
+  }
+}
+exports.MDCToolbar = MDCToolbar;
+},{"@material/base/index":"..\\node_modules\\@material\\base\\index.js","@material/ripple/index":"..\\node_modules\\@material\\ripple\\index.js","./foundation":"..\\node_modules\\@material\\toolbar\\foundation.js"}],"..\\node_modules\\preact-material-components\\Toolbar\\index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _preact = require("preact");
+
+var _MaterialComponent = _interopRequireDefault(require("../MaterialComponent"));
+
+var _toolbar = require("@material/toolbar");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+/**
+ * @prop fixed = false
+ * @prop fixed-lastrow-only = false
+ * @prop waterfall = false
+ * @prop flexible = false
+ * @prop flexible-default-behavior = false
+ */
+class Toolbar extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'toolbar';
+    this._mdcProps = ['fixed', 'fixed-lastrow-only', 'waterfall', 'flexible', 'flexible-default-behavior'];
+    this._onChange = this._onChange.bind(this);
+  }
+
+  _onChange(e) {
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
+  }
+
+  componentDidMount() {
+    this.MDComponent = new _toolbar.MDCToolbar(this.control);
+    this.MDComponent.listen('MDCToolbar:change', this._onChange);
+  }
+
+  componentWillUnmount() {
+    this.MDComponent.unlisten('MDCToolbar:change', this._onChange);
+    this.MDComponent.destroy && this.MDComponent.destroy();
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("header", _extends({
+      ref: this.setControlRef
+    }, props), props.children);
+  }
+
+}
+
+class ToolbarRow extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'toolbar__row';
+  }
+
+}
+/**
+ * @prop align-end = false
+ * @prop align-start = false
+ * @prop shrink-to-fit = false
+ */
+
+
+class ToolbarSection extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'toolbar__section';
+    this._mdcProps = ['align-start', 'align-end', 'shrink-to-fit'];
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("section", props, props.children);
+  }
+
+}
+/**
+ * @prop menu = false
+ */
+
+
+class ToolbarIcon extends _MaterialComponent.default {
+  constructor(props) {
+    super();
+    this.componentName = 'toolbar__icon';
+
+    if (props.menu) {
+      this.componentName = 'toolbar__menu-icon';
+    }
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("a", _extends({
+      className: "material-icons"
+    }, props), props.children || 'menu');
+  }
+
+}
+/**
+ * @prop title = ''
+ */
+
+
+class ToolbarTitle extends _MaterialComponent.default {
+  constructor() {
+    super();
+    this.componentName = 'toolbar__title';
+  }
+
+  materialDom(props) {
+    return (0, _preact.h)("span", props, props.children);
+  }
+
+}
+
+Toolbar.Section = ToolbarSection;
+Toolbar.Icon = ToolbarIcon;
+Toolbar.Title = ToolbarTitle;
+Toolbar.Row = ToolbarRow;
+var _default = Toolbar;
+exports.default = _default;
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","../MaterialComponent":"..\\node_modules\\preact-material-components\\MaterialComponent.js","@material/toolbar":"..\\node_modules\\@material\\toolbar\\index.js"}],"..\\node_modules\\preact-material-components\\Toolbar\\style.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"..\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js"}],"..\\node_modules\\preact-material-components\\Typography\\style.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -2916,11 +3457,19 @@ exports.default = Hello;
 },{"_css_loader":"..\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js"}],"index.js":[function(require,module,exports) {
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _preact = require('preact');
 
 var _app = require('./app');
 
 var _app2 = _interopRequireDefault(_app);
+
+var _Toolbar = require('preact-material-components/Toolbar');
+
+var _Toolbar2 = _interopRequireDefault(_Toolbar);
+
+require('preact-material-components/Toolbar/style.css');
 
 require('preact-material-components/Typography/style.css');
 
@@ -2928,12 +3477,68 @@ require('preact-material-components/Theme/style.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _preact.render)((0, _preact.h)(
-    'div',
-    { id: 'foo' },
-    (0, _preact.h)(_app2.default, null)
-), document.body);
-},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","./app":"app.js","preact-material-components/Typography/style.css":"..\\node_modules\\preact-material-components\\Typography\\style.css","preact-material-components/Theme/style.css":"..\\node_modules\\preact-material-components\\Theme\\style.css"}],"..\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Index = function (_Component) {
+    _inherits(Index, _Component);
+
+    function Index() {
+        _classCallCheck(this, Index);
+
+        return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this));
+    }
+
+    _createClass(Index, [{
+        key: 'render',
+        value: function render() {
+            return (0, _preact.h)(
+                'div',
+                null,
+                (0, _preact.h)(
+                    _Toolbar2.default,
+                    { className: 'topappbar' },
+                    (0, _preact.h)(
+                        _Toolbar2.default.Row,
+                        null,
+                        (0, _preact.h)(
+                            _Toolbar2.default.Section,
+                            { 'align-start': true },
+                            (0, _preact.h)(
+                                _Toolbar2.default.Icon,
+                                { navigation: true },
+                                'menu'
+                            ),
+                            (0, _preact.h)(
+                                _Toolbar2.default.Title,
+                                null,
+                                'Quizair'
+                            )
+                        ),
+                        (0, _preact.h)(
+                            _Toolbar2.default.Section,
+                            { 'align-end': true },
+                            (0, _preact.h)(
+                                _Toolbar2.default.Icon,
+                                null,
+                                'more_vert'
+                            )
+                        )
+                    )
+                ),
+                (0, _preact.h)(_app2.default, null)
+            );
+        }
+    }]);
+
+    return Index;
+}(_preact.Component);
+
+(0, _preact.render)((0, _preact.h)(Index, null), document.body);
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","./app":"app.js","preact-material-components/Toolbar":"..\\node_modules\\preact-material-components\\Toolbar\\index.js","preact-material-components/Toolbar/style.css":"..\\node_modules\\preact-material-components\\Toolbar\\style.css","preact-material-components/Typography/style.css":"..\\node_modules\\preact-material-components\\Typography\\style.css","preact-material-components/Theme/style.css":"..\\node_modules\\preact-material-components\\Theme\\style.css"}],"..\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 

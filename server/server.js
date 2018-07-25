@@ -1,6 +1,7 @@
 //const wwwhisper = require('connect-wwwhisper');
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
@@ -13,10 +14,13 @@ const app = express();
 // app.use(wwwhisper(false));
 
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../dist`));
+app.use('/', express.static(`${__dirname}/../dist`));
+// app.use('/static', express.static(`${__dirname}/../static`));
+// app.use('/manifest.json', express.static(`${__dirname}/../manifest.json`));
 
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname, './build', 'index.html'));
+// app.get('/*', function(req, res) {
+//     //res.sendFile(path.join(__dirname, './build', 'index.html'));
+//     res.sendFile(path.resolve('dist/index.html'));
 // });
 
 // app.post('/todos', (req, res) => {
