@@ -1,14 +1,13 @@
 //const wwwhisper = require('connect-wwwhisper');
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+//const path = require('path');
 
 const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
-const { User } = require('./models/user');
+//const { User } = require('./models/user');
 
 const port = process.env.PORT || 3000;
-
 const app = express();
 
 // app.use(wwwhisper(false));
