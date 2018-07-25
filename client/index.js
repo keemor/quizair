@@ -17,11 +17,7 @@ class Index extends Component {
                 <Toolbar className="topappbar">
                     <Toolbar.Row>
                         <Toolbar.Section align-start>
-                            <Toolbar.Icon navigation>menu</Toolbar.Icon>
                             <Toolbar.Title>Quizair</Toolbar.Title>
-                        </Toolbar.Section>
-                        <Toolbar.Section align-end>
-                            <Toolbar.Icon>more_vert</Toolbar.Icon>
                         </Toolbar.Section>
                     </Toolbar.Row>
                 </Toolbar>

@@ -3515,23 +3515,9 @@ var Index = function (_Component) {
                             _Toolbar2.default.Section,
                             { 'align-start': true },
                             (0, _preact.h)(
-                                _Toolbar2.default.Icon,
-                                { navigation: true },
-                                'menu'
-                            ),
-                            (0, _preact.h)(
                                 _Toolbar2.default.Title,
                                 null,
                                 'Quizair'
-                            )
-                        ),
-                        (0, _preact.h)(
-                            _Toolbar2.default.Section,
-                            { 'align-end': true },
-                            (0, _preact.h)(
-                                _Toolbar2.default.Icon,
-                                null,
-                                'more_vert'
                             )
                         )
                     )
