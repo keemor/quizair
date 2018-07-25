@@ -5,6 +5,7 @@ import Toolbar from 'preact-material-components/Toolbar';
 import 'preact-material-components/Toolbar/style.css';
 import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
+import './style.css';
 
 class Index extends Component {
     constructor() {

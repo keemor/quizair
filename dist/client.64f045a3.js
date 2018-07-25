@@ -3454,6 +3454,11 @@ exports.default = _default;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
+},{"_css_loader":"..\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js"}],"style.css":[function(require,module,exports) {
+
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"..\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js"}],"index.js":[function(require,module,exports) {
 'use strict';
 
@@ -3474,6 +3479,8 @@ require('preact-material-components/Toolbar/style.css');
 require('preact-material-components/Typography/style.css');
 
 require('preact-material-components/Theme/style.css');
+
+require('./style.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3538,7 +3545,7 @@ var Index = function (_Component) {
 }(_preact.Component);
 
 (0, _preact.render)((0, _preact.h)(Index, null), document.body);
-},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","./app":"app.js","preact-material-components/Toolbar":"..\\node_modules\\preact-material-components\\Toolbar\\index.js","preact-material-components/Toolbar/style.css":"..\\node_modules\\preact-material-components\\Toolbar\\style.css","preact-material-components/Typography/style.css":"..\\node_modules\\preact-material-components\\Typography\\style.css","preact-material-components/Theme/style.css":"..\\node_modules\\preact-material-components\\Theme\\style.css"}],"..\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
+},{"preact":"..\\node_modules\\preact\\dist\\preact.esm.js","./app":"app.js","preact-material-components/Toolbar":"..\\node_modules\\preact-material-components\\Toolbar\\index.js","preact-material-components/Toolbar/style.css":"..\\node_modules\\preact-material-components\\Toolbar\\style.css","preact-material-components/Typography/style.css":"..\\node_modules\\preact-material-components\\Typography\\style.css","preact-material-components/Theme/style.css":"..\\node_modules\\preact-material-components\\Theme\\style.css","./style.css":"style.css"}],"..\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -3565,9 +3572,9 @@ module.bundle.Module = Module;
 
 var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-  var hostname = undefined || location.hostname;
+  var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '54233' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57923' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

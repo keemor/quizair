@@ -1236,4 +1236,6 @@ a.mdc-list-item {
   /* @alternate */
   background-color: var(--mdc-theme-secondary, #018786) !important; }
 
-/*# sourceMappingURL=mdc.theme.css.map*/
+/*# sourceMappingURL=mdc.theme.css.map*/:root {
+    --mdc-theme-primary: #199450;
+}
