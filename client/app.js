@@ -1,7 +1,6 @@
 import { h, render, Component } from 'preact';
 import List from 'preact-material-components/List';
 import 'preact-material-components/List/style.css';
-
 import 'preact-material-components/Card/style.css';
 
 export default class Hello extends Component {
