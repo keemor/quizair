@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const enforce = require('express-sslify');
+const compression = require('compression');
 
 const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
@@ -14,6 +15,7 @@ if (env === 'production') {
     app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use('/', express.static(`${__dirname}/../dist`));
 
