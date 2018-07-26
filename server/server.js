@@ -1,11 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const enforce = require('express-sslify');
 
 const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
 
+const env = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 3000;
 const app = express();
+
+//Disable http on heroku
+if (env === 'production') {
+    app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 
 app.use(bodyParser.json());
 app.use('/', express.static(`${__dirname}/../dist`));
