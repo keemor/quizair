@@ -11,10 +11,14 @@ export default class Hello extends Component {
         };
     }
 
-    componentDidMount() {
-        fetch('/todos')
-            .then(response => response.json())
-            .then(data => this.setState({ todos: data.todos }));
+    async componentDidMount() {
+        try {
+            const response = await fetch('/todos');
+            const data = await response.json();
+            this.setState({ todos: data.todos });
+        } catch (error) {
+            console.error('Quizair:' + error);
+        }
     }
 
     render(props, { todos }) {
