@@ -19,19 +19,13 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use('/', express.static(`${__dirname}/../dist`));
 
-app.get('/todos', (req, res) => {
-    Todo.find({})
-        .exec()
-        .then(
-            todos => {
-                //docs.map(d => console.log(d, d._id.getTimestamp()));
-
-                res.send({ todos });
-            },
-            err => {
-                res.status(400).send(e);
-            }
-        );
+app.get('/todos', async (req, res) => {
+    try {
+        const todos = await Todo.find({}).exec();
+        res.send({ todos });
+    } catch (e) {
+        res.status(400).send(e);
+    }
 });
 
 app.listen(port, () => {
