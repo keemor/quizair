@@ -20,10 +20,20 @@
 <noscript>Enable JavaScript to see this page</noscript>
 <script>
     // Check that service workers are registered
+    // if ('serviceWorker' in navigator) {
+    //     // Use the window load event to keep the page load performant
+    //     window.addEventListener('load', () => {
+    //         navigator.serviceWorker.register('/sw.js');
+    //     });
+    // }
+    //Temporary disabled service workers
     if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (let registration of registrations) {
+                registration.unregister()
+            }
+        }).catch(function (err) {
+            console.log('Service Worker registration failed: ', err);
         });
     }
 </script>

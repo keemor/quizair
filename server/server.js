@@ -28,31 +28,37 @@ app.get('/todos', async (req, res) => {
     }
 });
 
+app.post('/todos', (req, res) => {
+    const todo = new Todo({
+        text: req.body.text
+    });
+
+    todo.save().then(
+        doc => {
+            res.send(doc);
+        },
+        e => {
+            res.status(400).send(e);
+        }
+    );
+});
+
+app.delete('/todo/:id', async (req, res) => {
+    const id = req.param('id');
+
+    return await Todo.findByIdAndRemove(id, (err, todo) => {
+        // As always, handle any potential errors:
+        if (err) return res.status(500).send(err);
+        // We'll create a simple object to send back with a message and the id of the document that was removed
+        // You can really do this however you want, though.
+        const response = {
+            message: 'Todo successfully deleted',
+            id: todo._id
+        };
+        return res.status(200).send(response);
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server running on ${port}`);
 });
-
-// app.use('/static', express.static(`${__dirname}/../static`));
-// app.use('/manifest.json', express.static(`${__dirname}/../manifest.json`));
-
-// app.get('/*', function(req, res) {
-//     //res.sendFile(path.join(__dirname, './build', 'index.html'));
-//     res.sendFile(path.resolve('dist/index.html'));
-// });
-
-// app.post('/todos', (req, res) => {
-//     console.log(req.body);
-
-//     const todo = new Todo({
-//         text: req.body.text
-//     });
-
-//     todo.save().then(
-//         doc => {
-//             res.send(doc);
-//         },
-//         e => {
-//             res.status(400).send(e);
-//         }
-//     );
-// });
