@@ -7,6 +7,7 @@ import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 
 import './style.css';
+import 'preact/debug';
 
 class Index extends Component {
     constructor() {

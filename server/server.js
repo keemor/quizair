@@ -54,7 +54,8 @@ app.delete('/todo/:id', async (req, res) => {
         // You can really do this however you want, though.
         const response = {
             message: 'Todo successfully deleted',
-            id: todo._id
+            id: todo._id,
+            text: todo.text
         };
         return res.status(200).send(response);
     });
@@ -71,7 +72,8 @@ app.put('/todo/:id', async (req, res) => {
         // You can really do this however you want, though.
         const response = {
             message: 'Todo successfully updated',
-            id: todo._id
+            id: todo._id,
+            text: todo.text
         };
         return res.status(200).send(response);
     });
