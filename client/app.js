@@ -1,13 +1,15 @@
 import { h, render, Component } from 'preact';
+import Card from 'preact-material-components/Card';
 import List from 'preact-material-components/List';
 import TextField from 'preact-material-components/TextField';
-import Icon from 'preact-material-components/Icon';
 
-import 'preact-material-components/List/style.css';
 import 'preact-material-components/Card/style.css';
+import 'preact-material-components/List/style.css';
 import 'preact-material-components/TextField/style.css';
 
-export default class Hello extends Component {
+import Todo from './components/todo';
+
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.remove = this.remove.bind(this);
@@ -35,19 +37,19 @@ export default class Hello extends Component {
         e.preventDefault();
         const id = e.target.id;
 
-        try {
-            const response = await fetch(`/todo/${id}`, {
-                method: 'DELETE'
-            });
-            const data = await response.json();
+        // try {
+        //     const response = await fetch(`/todo/${id}`, {
+        //         method: 'DELETE'
+        //     });
+        //     const data = await response.json();
 
-            console.log('data: ', data);
+        //     console.log('data: ', data);
 
-            const newState = this.state.todos.filter(t => t._id !== id);
-            this.setState({ todos: newState });
-        } catch (error) {
-            console.error(error);
-        }
+        //     const newState = this.state.todos.filter(t => t._id !== id);
+        //     this.setState({ todos: newState });
+        // } catch (error) {
+        //     console.error(error);
+        // }
     }
 
     async add(e) {
@@ -65,7 +67,7 @@ export default class Hello extends Component {
                 })
             });
             const newTodo = await response.json();
-            const newState = [...this.state.todos, newTodo];
+            const newState = [newTodo, ...this.state.todos];
             this.setState({ todos: newState, text: '' });
         } catch (error) {
             console.error(error);
@@ -75,15 +77,35 @@ export default class Hello extends Component {
         e.preventDefault();
         const id = e.target.id;
 
-        const toggleTodo = this.state.todos.map(t => {
-            if (t._id !== id) {
-                return t;
-            }
-            t.completed = !t.completed;
-            return t;
-        });
+        try {
+            const todo = this.state.todos.filter(t => t._id === id);
 
-        this.setState({ todos: toggleTodo });
+            const completed = !todo[0].completed;
+
+            const response = await fetch(`/todo/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    completed
+                })
+            });
+            const doneTodo = await response.json();
+            console.log('doneTodo: ', doneTodo);
+
+            const toggleTodo = this.state.todos.map(t => {
+                if (t._id !== id) {
+                    return t;
+                }
+                t.completed = completed;
+                return t;
+            });
+
+            this.setState({ todos: toggleTodo });
+        } catch (error) {
+            console.error(error);
+        }
     }
     update(e) {
         this.setState({ text: e.target.value });
@@ -93,29 +115,23 @@ export default class Hello extends Component {
         return (
             <div>
                 <form onSubmit={this.add} action="javascript:">
-                    <TextField autocomplete="off" label="New To Do" value={text} onInput={this.update} outlined />
+                    <Card>
+                        <TextField
+                            autocomplete="off"
+                            label="New To Do"
+                            fullwidth="true"
+                            value={text}
+                            onInput={this.update}
+                        />
+                    </Card>
                 </form>
-                <List>
-                    {todos.map((todo, idx) => {
-                        return (
-                            <List.Item key={idx}>
-                                <Icon id={todo._id} onclick={this.remove} className="hand" title="Delete">
-                                    delete_outline
-                                </Icon>
-                                <Icon id={todo._id} onclick={this.done} className="hand" title="">
-                                    {todo.completed ? 'check_box' : 'check_box_outline_blank'}
-                                </Icon>
-                                <div
-                                    style={{
-                                        textDecoration: todo.completed ? 'line-through' : 'none'
-                                    }}
-                                >
-                                    {todo.text}
-                                </div>
-                            </List.Item>
-                        );
-                    })}
-                </List>
+                <Card>
+                    <List>
+                        {todos.map(todo => {
+                            return <Todo todo={todo} onRemove={this.remove} onDone={this.done} />;
+                        })}
+                    </List>
+                </Card>
             </div>
         );
     }

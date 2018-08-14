@@ -23,12 +23,12 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "client.29ea5506.css",
-    "revision": "1a6bf725b90a8edeeec624a7fa8c5aa1"
+    "url": "client.69644775.js",
+    "revision": "75d13f4d10ba14d52e3909d662f7846c"
   },
   {
-    "url": "client.4484dcef.js",
-    "revision": "7f756a33382f9aa65f6c71d37ff8381b"
+    "url": "client.95714628.css",
+    "revision": "e795944fd866f6f4e26d25d09e28bfbb"
   },
   {
     "url": "icon.0fc16281.png",
@@ -40,11 +40,11 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "1d969678fd2bb61b7a1e4de6e1fd0913"
+    "revision": "88ee1b555cce65449ded7a25826b3771"
   },
   {
     "url": "/",
-    "revision": "8e4619b20efa87ee9146d6b330b69669"
+    "revision": "dd42ad842736282150bc2d739069436d"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();

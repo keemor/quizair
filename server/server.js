@@ -22,6 +22,7 @@ app.use('/', express.static(`${__dirname}/../dist`));
 app.get('/todos', async (req, res) => {
     try {
         const todos = await Todo.find({}).exec();
+        todos.reverse();
         res.send({ todos });
     } catch (e) {
         res.status(400).send(e);
@@ -53,6 +54,23 @@ app.delete('/todo/:id', async (req, res) => {
         // You can really do this however you want, though.
         const response = {
             message: 'Todo successfully deleted',
+            id: todo._id
+        };
+        return res.status(200).send(response);
+    });
+});
+
+app.put('/todo/:id', async (req, res) => {
+    const id = req.param('id');
+    const body = req.body;
+
+    return await Todo.findByIdAndUpdate(id, body, { new: true }, (err, todo) => {
+        // As always, handle any potential errors:
+        if (err) return res.status(500).send(err);
+        // We'll create a simple object to send back with a message and the id of the document that was removed
+        // You can really do this however you want, though.
+        const response = {
+            message: 'Todo successfully updated',
             id: todo._id
         };
         return res.status(200).send(response);
