@@ -9,3 +9,8 @@
 -   **Unistore** for state management
 -   **Parcel Bundler** for bundling
 -   **Parcel Plugin SW Cache** for Progressive Web Application support
+-   **100%** in Lighthouse Audit
+
+<p>
+    <img src="img/lighthouse.png" alt="Lighthouse" class="scale" />
+</p>

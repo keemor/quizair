@@ -11,3 +11,7 @@
     color: var(--mdc-theme-text-primary-on-primary, white);
     text-decoration: none;
 }
+.scale {
+    max-width: 100%;
+    object-fit: scale-down;
+}
