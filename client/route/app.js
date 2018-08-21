@@ -71,6 +71,7 @@ export default class App extends Component {
                             return <Todo todo={todo} onRemove={this.onRemove} onToggle={toggleTodo} />;
                         })}
                     </List>
+                    {todos.length ? '' : 'Empty list'}
                 </Card>
 
                 <Dialog

@@ -11,7 +11,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="@keemor" />
     <meta name="description" content="Node Mongo Express Preact PWA" />
-    <meta name="keywords" content="node, mongo, express, babel, parcel, preact, preact-material-components, unistore, preact-router" />
+    <meta name="keywords" content="node, mongo, express, babel, parcel, preact, preact-material-components, unistore, preact-router"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimal-ui" />
     <meta name="theme-color" content="#199450">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -20,22 +21,22 @@
 <noscript>Enable JavaScript to see this page</noscript>
 <script>
     // Check that service workers are registered
-    // if ('serviceWorker' in navigator) {
-    //     // Use the window load event to keep the page load performant
-    //     window.addEventListener('load', () => {
-    //         navigator.serviceWorker.register('/sw.js');
-    //     });
-    // }
-    //Temporary disabled service workers
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (let registration of registrations) {
-                registration.unregister()
-            }
-        }).catch(function (err) {
-            console.log('Service Worker registration failed: ', err);
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js');
         });
     }
+    //Temporary disabled service workers
+    // if ('serviceWorker' in navigator) {
+    //     navigator.serviceWorker.getRegistrations().then(function (registrations) {
+    //         for (let registration of registrations) {
+    //             registration.unregister()
+    //         }
+    //     }).catch(function (err) {
+    //         console.log('Service Worker registration failed: ', err);
+    //     });
+    // }
 </script>
 
 <body class="body">
