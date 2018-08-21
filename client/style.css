@@ -1,6 +1,9 @@
 :root {
     --mdc-theme-primary: #199450;
 }
+.body {
+    margin: 0;
+}
 .hand {
     cursor: pointer;
 }
