@@ -1,6 +1,21 @@
 import { h, render, Component } from 'preact';
-import App from './app';
+
+import createStore from 'unistore';
+import devtools from 'unistore/devtools';
+import { Provider, connect } from 'unistore/preact';
 import Toolbar from 'preact-material-components/Toolbar';
+import Snackbar from 'preact-material-components/Snackbar';
+import 'preact-material-components/Snackbar/style.css';
+
+import App from './app';
+import actions from './actions';
+
+const initialState = {
+    todos: [],
+    message: ''
+};
+
+let store = process.env.NODE_ENV === 'production' ? createStore(initialState) : devtools(createStore(initialState));
 
 import 'preact-material-components/Toolbar/style.css';
 import 'preact-material-components/Typography/style.css';
@@ -13,7 +28,13 @@ class Index extends Component {
     constructor() {
         super();
     }
-    render() {
+    render({ todos, message, addTodo, getTodos, removeTodo, toggleTodo }) {
+        if (message) {
+            this.bar.MDComponent.show({
+                message
+            });
+        }
+
         return (
             <div>
                 <Toolbar className="topappbar">
@@ -23,9 +44,25 @@ class Index extends Component {
                         </Toolbar.Section>
                     </Toolbar.Row>
                 </Toolbar>
-                <App />
+                <App {...{ todos, addTodo, getTodos, removeTodo, toggleTodo }} />
+                <Snackbar
+                    ref={bar => {
+                        this.bar = bar;
+                    }}
+                />
             </div>
         );
     }
 }
-render(<Index />, document.body);
+
+const IndexConnected = connect(
+    Object.keys(initialState),
+    actions
+)(Index);
+
+render(
+    <Provider store={store}>
+        <IndexConnected />
+    </Provider>,
+    document.body
+);

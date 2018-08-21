@@ -45,7 +45,7 @@ app.post('/todos', (req, res) => {
 });
 
 app.delete('/todo/:id', async (req, res) => {
-    const id = req.param('id');
+    const id = req.params.id;
 
     return await Todo.findByIdAndRemove(id, (err, todo) => {
         // As always, handle any potential errors:
@@ -62,7 +62,7 @@ app.delete('/todo/:id', async (req, res) => {
 });
 
 app.put('/todo/:id', async (req, res) => {
-    const id = req.param('id');
+    const id = req.params.id;
     const body = req.body;
 
     return await Todo.findByIdAndUpdate(id, body, { new: true }, (err, todo) => {

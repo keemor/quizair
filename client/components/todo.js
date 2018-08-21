@@ -3,7 +3,7 @@ import List from 'preact-material-components/List';
 import Icon from 'preact-material-components/Icon';
 
 export default class Todo extends Component {
-    render({ todo, onRemove, onDone }) {
+    render({ todo, onRemove, onToggle }) {
         return (
             <List.Item key={todo._id}>
                 <Icon id={todo._id} onclick={onRemove} className="hand" title="Remove">
@@ -11,7 +11,7 @@ export default class Todo extends Component {
                 </Icon>
                 <Icon
                     id={todo._id}
-                    onclick={onDone}
+                    onclick={onToggle}
                     className="hand"
                     title={todo.completed ? 'Mark Undone' : 'Mark Done'}
                 >
@@ -19,7 +19,7 @@ export default class Todo extends Component {
                 </Icon>
                 <div
                     id={todo._id}
-                    onclick={onDone}
+                    onclick={onToggle}
                     className="hand"
                     style={{
                         textDecoration: todo.completed ? 'line-through' : 'none'
