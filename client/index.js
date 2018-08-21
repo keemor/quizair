@@ -11,13 +11,13 @@ import Snackbar from 'preact-material-components/Snackbar';
 import 'preact-material-components/Snackbar/style.css';
 import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
-
 import './style.css';
-import 'preact/debug';
 
 import App from './route/app';
 import About from './route/about';
 import Layout from './component/layout';
+
+import 'preact/debug';
 
 const initialState = {
     todos: [],
