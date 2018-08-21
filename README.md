@@ -12,5 +12,5 @@
 -   **100%** in Lighthouse Audit
 
 <p>
-    <img src="img/lighthouse.png" alt="Lighthouse" class="scale" />
+    <img src="client/img/lighthouse.png" alt="Lighthouse" class="scale" />
 </p>
