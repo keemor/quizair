@@ -1,6 +1,6 @@
 # quizair
 
-> Node Express MongoDB Preact PWA hosted on [herokuapp.com](https://quizair.herokuapp.com/)
+> Node Express MongoDB Preact PWA hosted on [quizair.herokuapp.com](https://quizair.herokuapp.com/)
 
 -   **Express** as a server
 -   **MongoDB / Mongoose** to store data
