@@ -10,7 +10,7 @@ import 'preact-material-components/TextField/style.css';
 import 'preact-material-components/Dialog/style.css';
 import 'preact-material-components/Button/style.css';
 
-import Todo from './components/todo';
+import Todo from '../component/todo';
 
 export default class App extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ export default class App extends Component {
     }
     render() {
         const { text, dialogMessage, _id2remove } = this.state;
-        const { todos, addTodo, removeTodo, toggleTodo } = this.props;
+        const { todos, removeTodo, toggleTodo } = this.props;
         return (
             <div>
                 <form onSubmit={() => this.onSubmit(text)} action="javascript:">

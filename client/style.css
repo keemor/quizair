@@ -4,3 +4,7 @@
 .hand {
     cursor: pointer;
 }
+.toolbarTitleLink {
+    color: var(--mdc-theme-text-primary-on-primary, white);
+    text-decoration: none;
+}
