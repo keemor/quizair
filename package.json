@@ -7,7 +7,7 @@
         "mon": "nodemon server/server.js",
         "parcel:watch": "node node_modules/parcel-bundler/bin/cli.js watch client/index.html",
         "parcel:build": "node node_modules/parcel-bundler/bin/cli.js build client/index.html",
-        "test": "mocha server/**/*.test.js",
+        "test": "mocha  --exit server/**/*.test.js",
         "test:watch": "nodemon --exec 'npm test'"
     },
     "author": "keemor",
