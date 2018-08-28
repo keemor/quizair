@@ -2,6 +2,8 @@
 
 > Node Express MongoDB Preact PWA hosted on [quizair.herokuapp.com](https://quizair.herokuapp.com/)
 
+[![Build Status](https://travis-ci.org/keemor/quizair.svg?branch=master)](https://travis-ci.org/keemor/quizair)
+
 -   **Express** as a server
 -   **MongoDB / Mongoose** to store data
 -   **Preact Material Components** as layout
