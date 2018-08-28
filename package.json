@@ -7,7 +7,8 @@
         "mon": "nodemon server/server.js",
         "parcel:watch": "node node_modules/parcel-bundler/bin/cli.js watch client/index.html",
         "parcel:build": "node node_modules/parcel-bundler/bin/cli.js build client/index.html",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "mocha server/**/*.test.js",
+        "test:watch": "nodemon --exec 'npm test'"
     },
     "author": "keemor",
     "license": "ISC",
@@ -32,5 +33,10 @@
         "preact-router": "^2.6.1",
         "unistore": "^3.0.6"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "expect": "^23.5.0",
+        "mocha": "^5.2.0",
+        "nodemon": "^1.18.3",
+        "supertest": "^3.1.0"
+    }
 }

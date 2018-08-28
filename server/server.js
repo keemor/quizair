@@ -44,6 +44,17 @@ app.post('/todos', (req, res) => {
     );
 });
 
+app.get('/todo/:id', async (req, res) => {
+    const id = req.params.id;
+
+    return await Todo.findById(id, (err, todo) => {
+        // As always, handle any potential errors:
+        if (err) return res.status(500).send(err);
+
+        return res.status(200).send({ todo });
+    });
+});
+
 app.delete('/todo/:id', async (req, res) => {
     const id = req.params.id;
 
@@ -82,3 +93,5 @@ app.put('/todo/:id', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on ${port}`);
 });
+
+module.exports = { app };
