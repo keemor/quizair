@@ -71,7 +71,8 @@ export default class App extends Component {
                             return <Todo todo={todo} onRemove={this.onRemove} onToggle={toggleTodo} />;
                         })}
                     </List>
-                    {todos.length ? '' : 'Empty list or herokuapp.com is waking up from sleep mode. Wait few seconds!'}
+
+                    {todos.length ? '' : 'herokuapp.com is waking up from sleep mode. Wait few seconds!'}
                 </Card>
 
                 <Dialog

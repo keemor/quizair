@@ -27,8 +27,8 @@ self.__precacheManifest = [
     "revision": "1cc9e4f3a8df60e94b8e2fd7a7ba375c"
   },
   {
-    "url": "client.ad8bbf45.js",
-    "revision": "08befdacc9616c6c15c496cfe383c04b"
+    "url": "client.e861483e.js",
+    "revision": "cc734fdbb7efc8dbcfceb2d8e7919051"
   },
   {
     "url": "icon.0fc16281.png",
@@ -40,11 +40,11 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "ede0caf4463b21ac749f182e7bb44afa"
+    "revision": "2059662ba7e79dfa9e6d522b58194b3d"
   },
   {
     "url": "/",
-    "revision": "ecfd1e14772ccfe2f65e247105d39b19"
+    "revision": "358f2e55880b0cd00371cee0e2faf238"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
